@@ -1,20 +1,13 @@
 "use client";
+import { useLocale } from "next-intl";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export default function GoBackButton() {
-  const router = useRouter();
+  const locale = useLocale();
 
-  const handleNavigateBack = () => {
-    router.back();
-  };
   return (
     <div className="my-5">
-      <Link
-        href="#"
-        onClick={() => handleNavigateBack()}
-        className="underline text-xs uppercase"
-      >
+      <Link href={`/${locale}`} className="underline text-xs uppercase">
         Go Back
       </Link>
     </div>
