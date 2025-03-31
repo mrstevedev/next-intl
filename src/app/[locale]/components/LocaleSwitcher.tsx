@@ -7,22 +7,30 @@ import {
   ChevronUpIcon,
 } from "@radix-ui/react-icons";
 import classnames from "classnames";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 export default function LocaleSwitcher() {
   const localeActive = useLocale();
+  const pathname = usePathname();
   const slug = useParams().slug;
+  const pathRoute = pathname.split("/")[2];
 
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
   const handleSetLanguage = (locale: string) => {
-    startTransition(() => {
-      router.replace(`/${locale}/product/${slug}`);
-    });
+    if (slug) {
+      startTransition(() => {
+        router.replace(`/${locale}/${pathRoute}/${slug}`);
+      });
+    } else {
+      startTransition(() => {
+        router.replace(`/${locale}`);
+      });
+    }
   };
   return (
     <Select.Root
@@ -90,17 +98,9 @@ export default function LocaleSwitcher() {
 //   }
 // );
 
-const SelectItem = ({
-  children,
-  className,
-  ...props
-}: React.ComponentProps<"div">) => {
+const SelectItem = ({ children, ...props }: any) => {
   return (
-    <Select.Item
-      value="en"
-      className={classnames("SelectItem", className)}
-      {...props}
-    >
+    <Select.Item value={children} {...props}>
       <Select.ItemText>{children}</Select.ItemText>
       <Select.ItemIndicator className="SelectItemIndicator">
         <CheckIcon />
