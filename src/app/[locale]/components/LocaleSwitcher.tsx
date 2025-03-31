@@ -90,10 +90,14 @@ export default function LocaleSwitcher() {
 //   }
 // );
 
-const SelectItem = ({ children, className, ...props }) => {
+const SelectItem = ({
+  children,
+  className,
+  ...props
+}: React.ComponentProps<"div">) => {
   return (
     <Select.Item
-      value={children}
+      value="en"
       className={classnames("SelectItem", className)}
       {...props}
     >
