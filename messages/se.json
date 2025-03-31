@@ -1,0 +1,20 @@
+{
+  "HomePage": {
+    "title": "nästa-intl exempel",
+    "description": "Välkommen till exemplet Next.js Internationalization (i18n)! Denna demo visar kraften i App Router och hur man hanterar flerspråkigt innehåll sömlöst med hjälp av next-intl."
+  },
+  "ProductPage": {
+    "title": "Produkt",
+    "description": "Produktbeskrivning"
+  },
+  "NotFoundPage": {
+    "title": "Sidan hittas inte",
+    "description": "hoppsan! Det verkar som om du har snubblat på en sida som inte finns"
+  },
+  "Navigation": {
+    "home": "Hem"
+  },
+  "Footer": {
+    "copyright": "&copy 2024 Din app. Alla rättigheter förbehållna"
+  }
+}
