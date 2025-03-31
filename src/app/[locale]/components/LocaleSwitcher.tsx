@@ -47,19 +47,19 @@ export default function LocaleSwitcher() {
           </Select.ScrollUpButton>
           <Select.Viewport className="SelectViewport">
             <Select.Group>
-              <SelectItem value="en">
+              <SelectItem className="SelectItem" value="en">
                 <span className="fi fi-um"></span> English
               </SelectItem>
-              <SelectItem value="es">
+              <SelectItem className="SelectItem" value="es">
                 <span className="fi fi-mx"></span> Español
               </SelectItem>
-              <SelectItem value="se">
+              <SelectItem className="SelectItem" value="se">
                 <span className="fi fi-se"></span> Sweden
               </SelectItem>
-              <SelectItem value="fr">
+              <SelectItem className="SelectItem" value="fr">
                 <span className="fi fi-nl"></span> Français
               </SelectItem>
-              <SelectItem value="de">
+              <SelectItem className="SelectItem" value="de">
                 <span className="fi fi-de"></span> Deutsch
               </SelectItem>
             </Select.Group>
@@ -73,19 +73,34 @@ export default function LocaleSwitcher() {
   );
 }
 
-const SelectItem = React.forwardRef(
-  ({ children, className, ...props }, forwardedRef) => {
-    return (
-      <Select.Item
-        className={classnames("SelectItem", className)}
-        {...props}
-        ref={forwardedRef}
-      >
-        <Select.ItemText>{children}</Select.ItemText>
-        <Select.ItemIndicator className="SelectItemIndicator">
-          <CheckIcon />
-        </Select.ItemIndicator>
-      </Select.Item>
-    );
-  }
-);
+// const SelectItem = React.forwardRef(
+//   ({ children, className, ...props }, forwardedRef) => {
+//     return (
+//       <Select.Item
+//         className={classnames("SelectItem", className)}
+//         {...props}
+//         ref={forwardedRef}
+//       >
+//         <Select.ItemText>{children}</Select.ItemText>
+//         <Select.ItemIndicator className="SelectItemIndicator">
+//           <CheckIcon />
+//         </Select.ItemIndicator>
+//       </Select.Item>
+//     );
+//   }
+// );
+
+const SelectItem = ({ children, className, ...props }) => {
+  return (
+    <Select.Item
+      value={children}
+      className={classnames("SelectItem", className)}
+      {...props}
+    >
+      <Select.ItemText>{children}</Select.ItemText>
+      <Select.ItemIndicator className="SelectItemIndicator">
+        <CheckIcon />
+      </Select.ItemIndicator>
+    </Select.Item>
+  );
+};
